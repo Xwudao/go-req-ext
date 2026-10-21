@@ -1,0 +1,40 @@
+# Build artifacts
+/bin/
+/dist/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Coverage and profiling
+coverage.out
+coverage.html
+*.coverprofile
+profile.cov
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+credentials*
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local scratch files
+/tmp/
+
+# Workspace sums are machine-specific.
+go.work.sum
