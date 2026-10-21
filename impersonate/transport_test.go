@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"github.com/Xwudao/go-req"
-	"github.com/Xwudao/go-req-impersonate"
+	"github.com/Xwudao/go-req-ext/impersonate"
 )
 
 func newHTTPSServer(t *testing.T, handler http.Handler) (*httptest.Server, *x509.CertPool) {

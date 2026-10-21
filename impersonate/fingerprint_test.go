@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Xwudao/go-req-impersonate"
+	"github.com/Xwudao/go-req-ext/impersonate"
 	"github.com/bogdanfinn/tls-client/profiles"
 	utls "github.com/bogdanfinn/utls"
 )

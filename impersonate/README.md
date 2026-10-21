@@ -1,6 +1,8 @@
-# go-req-impersonate
+# go-req-ext / impersonate
 
-`go-req-impersonate`（package `impersonate`）是 [`go-req`](https://github.com/Xwudao/go-req) 的可选浏览器指纹扩展模块。
+`impersonate`（package `impersonate`）是 [`go-req`](https://github.com/Xwudao/go-req) 的可选浏览器指纹扩展模块，属于 [`go-req-ext`](../README.md) 多模块仓库。
+
+> **模块隔离**：本目录是独立的 Go module。只使用 `jar`、`persist` 等项目时，不会下载、编译或链接本模块，也不会把 uTLS、fhttp、tls-client 和 Chrome/Firefox/Safari Profile 数据带进最终二进制。使用指纹能力需要显式 `go get github.com/Xwudao/go-req-ext/impersonate` 并 import 本包。
 
 它提供一个标准库 `http.RoundTripper`，用于模拟特定浏览器快照的 TLS ClientHello、ALPN 和 HTTP/2 行为。核心 `go-req` 不依赖 uTLS、tls-client 或 fhttp，也不需要为了指纹功能修改自身：
 
@@ -28,7 +30,12 @@ httpClient := &http.Client{Transport: transport}
 
 ## 为什么是独立模块
 
-核心 `go-req` 保持“只依赖标准库”的设计原则。本模块独立维护第三方依赖：
+核心 `go-req` 保持“只依赖标准库”的设计原则，`go-req-ext` 也按依赖边界拆分模块：
+
+- `github.com/Xwudao/go-req-ext`：`jar`、`persist` 等轻量扩展，零第三方依赖。
+- `github.com/Xwudao/go-req-ext/impersonate`：本模块，独立维护 uTLS/fhttp/tls-client 等较重依赖。
+
+这样，一个只需要 Cookie 管理的应用不会因为同仓库存在指纹模块而增加依赖图、下载体积或二进制体积。本模块自身维护的第三方依赖：
 
 - `refraction-networking/utls` / `bogdanfinn/utls`：TLS ClientHello 构造
 - `bogdanfinn/fhttp`：可配置 HTTP/2 SETTINGS、优先级、Header 顺序的 HTTP 协议栈
@@ -57,11 +64,11 @@ httpClient := &http.Client{Transport: transport}
 要求 Go 1.24.1 或更高版本（由 fhttp / tls-client 当前版本决定）。
 
 ```bash
-go get github.com/Xwudao/go-req-impersonate
+go get github.com/Xwudao/go-req-ext/impersonate
 ```
 
 ```go
-import "github.com/Xwudao/go-req-impersonate"
+import "github.com/Xwudao/go-req-ext/impersonate"
 ```
 
 package 名是 `impersonate`。

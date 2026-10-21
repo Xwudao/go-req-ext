@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Xwudao/go-req-impersonate"
+	"github.com/Xwudao/go-req-ext/impersonate"
 	fhttp2 "github.com/bogdanfinn/fhttp/http2"
 	"github.com/bogdanfinn/tls-client/profiles"
 	"golang.org/x/net/http2/hpack"

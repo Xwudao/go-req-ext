@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Xwudao/go-req-impersonate"
+	"github.com/Xwudao/go-req-ext/impersonate"
 )
 
 func TestBuiltInProfilesAreConcreteSnapshots(t *testing.T) {

@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lightweight:
+    name: jar and persist (Go ${{ matrix.go }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.21.x', 'stable']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go }}
+          cache: false
+      - run: GOWORK=off go test ./...
+      - run: GOWORK=off go test -race ./...
+      - run: GOWORK=off go vet ./...
+      - name: Verify zero third-party dependencies
+        run: |
+          deps="$(GOWORK=off go list -m all | tail -n +2)"
+          if [ -n "$deps" ]; then
+            echo "root module must not depend on other modules:"
+            echo "$deps"
+            exit 1
+          fi
+      - name: Verify jar does not link impersonation
+        run: |
+          if GOWORK=off go list -deps ./jar | grep -E 'bogdanfinn|go-req-ext/impersonate'; then
+            echo "jar must not depend on the impersonation module"
+            exit 1
+          fi
+
+  impersonate:
+    name: impersonate (Go ${{ matrix.go }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: ['1.24.x', 'stable']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go }}
+          cache: false
+      - run: GOWORK=off go test ./...
+        working-directory: impersonate
+      - run: GOWORK=off go test -race ./...
+        working-directory: impersonate
+      - run: GOWORK=off go vet ./...
+        working-directory: impersonate
+
+  workspace:
+    name: workspace
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+          cache: false
+      - run: go test ./... ./impersonate/...

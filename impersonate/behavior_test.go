@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/Xwudao/go-req"
-	"github.com/Xwudao/go-req-impersonate"
+	"github.com/Xwudao/go-req-ext/impersonate"
 )
 
 func TestHTTP1ResponseTLSState(t *testing.T) {
