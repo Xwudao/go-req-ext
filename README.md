@@ -4,6 +4,8 @@
 
 一个仓库，多个 Go module，按需引入。轻量扩展保持标准库优先；浏览器指纹等重依赖能力放在独立子模块中，**只使用 Cookie 管理的项目不会下载、编译或链接 Chrome/Firefox/Safari 指纹模拟代码**。
 
+> 从 `go-req-impersonate` 迁移：浏览器指纹的引入路径已变为 `github.com/Xwudao/go-req-ext/impersonate`。旧仓库保留历史，不再更新。
+
 ## 模块布局
 
 | 模块 | 引入路径 | 依赖 | 内容 |
