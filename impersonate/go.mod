@@ -1,9 +1,9 @@
 module github.com/Xwudao/go-req-ext/impersonate
 
-go 1.24.1
+go 1.27
 
 require (
-	github.com/Xwudao/go-req v0.0.2
+	github.com/Xwudao/go-req v0.2.0
 	github.com/bogdanfinn/fhttp v0.6.9
 	github.com/bogdanfinn/tls-client v1.16.0
 	github.com/bogdanfinn/utls v1.7.8-barnius

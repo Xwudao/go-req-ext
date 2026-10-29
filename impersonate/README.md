@@ -61,7 +61,7 @@ httpClient := &http.Client{Transport: transport}
 
 ## 安装
 
-要求 Go 1.24.1 或更高版本（由 fhttp / tls-client 当前版本决定）。
+要求 Go 1.27 或更高版本（与 go-req v0.2.0 一致）。
 
 ```bash
 go get github.com/Xwudao/go-req-ext/impersonate

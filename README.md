@@ -19,7 +19,7 @@ go-req-ext/
 ├── go.work                # 本地开发用 workspace
 ├── jar/                   # http.CookieJar + 持久化
 ├── persist/               # Store 接口、Memory、File
-└── impersonate/           # 独立 module（Go 1.24.1+）
+└── impersonate/           # 独立 module（Go 1.27+）
     ├── go.mod
     └── ...
 ```
@@ -164,7 +164,7 @@ go test ./... ./impersonate/...
 
 ```bash
 GOWORK=off go test ./...                 # 根模块，Go 1.21+
-cd impersonate && GOWORK=off go test ./...  # 指纹模块，Go 1.24.1+
+cd impersonate && GOWORK=off go test ./...  # 指纹模块，Go 1.27+
 ```
 
 新增扩展时的依赖规则：

@@ -1,5 +1,5 @@
-github.com/Xwudao/go-req v0.0.2 h1:C7fMVOf5KGq9x1W4dGwxczkz3ieCppWywgYOA5ihlBs=
-github.com/Xwudao/go-req v0.0.2/go.mod h1:PCZmmBHpl0HWc1+Xsu4/VSodxecnU6LPQxVDx9EoIEg=
+github.com/Xwudao/go-req v0.2.0 h1:mYYvaC96Bop5+coTQdgij1pYu58pUJoxzbXx6MY0pHo=
+github.com/Xwudao/go-req v0.2.0/go.mod h1:V4N7o3zSKvczrA2MgNnfyn4ZHoCJ1OStrF+VeiI+U5Y=
 github.com/andybalholm/brotli v1.2.0 h1:ukwgCxwYrmACq68yiUqwIWnGY0cTPox/M94sVwToPjQ=
 github.com/andybalholm/brotli v1.2.0/go.mod h1:rzTDkvFWvIrjDXZHkuS16NPggd91W3kUSvPlQ1pLaKY=
 github.com/bogdanfinn/fhttp v0.6.9 h1:F9MsWR1K6JMRlXN4Q/MfjYmptr29nCdycQo+OPBG5U0=
